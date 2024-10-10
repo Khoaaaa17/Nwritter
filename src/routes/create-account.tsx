@@ -1,49 +1,10 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from "react";
-import styled from "styled-components"
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FirebaseError } from "firebase/app";
+import { Error, Form, Input, Switcher, Title, Wrapper } from "../components/auth-components";
 
-const Wrapper = styled.div`
-    height: 100%; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 420px;
-    padding: 50px 0px;
-`;
-
-const Title = styled.h1`
-    font-size: 42px;
-
-`;
-
-const Form = styled.form`
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-`;
-
-const Input = styled.input`
-    padding: 10px 20px;
-    border-radius: 50px;
-    border: none;
-    font-size: 16px;
-    &[type="submit"]{
-        cursor: pointer;
-        &:hover{
-            opacity: 0.8;
-        }
-    }
-
-`;
-
-const Error = styled.span`
-    font-weight:600;
-    color: crimson;
-`;
 
 export default function CreateAccount(){
     const navigate = useNavigate();
@@ -64,20 +25,30 @@ export default function CreateAccount(){
     }
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setError("");
         if( loading || name === "" || email === "" || password === "") return;
         try{
             setLoading(!loading);
             const credentials = await createUserWithEmailAndPassword(auth, email,password);
-            console.log(credentials);
             console.log(credentials.user);
             await updateProfile(credentials.user,{
                 displayName: name,
             })
             navigate("/");
         }catch(e){
-            //set error
+        if (e instanceof FirebaseError) {
+            if (e.code === "auth/email-already-in-use") {
+                setError("This email is already in use.");
+            } else if(e.code === "auth/weak-password"){
+                setError("Password should be at least 6 characters !");
+            }else {
+                setError(e.message);
+            }
+        } else {
+            setError("An unexpected error occurred.");
+        }
         } finally {
-            setLoading(!loading);
+            setLoading(loading);
         }
         
         console.log(name,email,password);
@@ -91,5 +62,8 @@ export default function CreateAccount(){
             <Input onChange={onChange} type="submit" value={loading ? "Loading..." : "Create Account"}/>
         </Form>
         {error !== "" && <Error>{error}</Error>}
+        <Switcher>
+            Already have an account? <Link to="/login">Log in &rarr;</Link>
+        </Switcher>
     </Wrapper>
 }
