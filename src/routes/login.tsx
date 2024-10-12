@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { Error, Form, Input, Switcher, Title, Wrapper } from "../components/auth-components";
+import { Error, ForgotPassword, Form, Input, Switcher, Title, Wrapper } from "../components/auth-components";
 import GithubButton from "../components/github-btn";
 
 
@@ -65,10 +65,13 @@ export default function Login(){
         </Form>
         {error !== "" && <Error>{error}</Error>}
         <Switcher>
-            Don't have an account? <Link to="/create-account">Create One &rarr;</Link>
-        </Switcher>
-        <Switcher>
             <GithubButton/>
         </Switcher>
+        <Switcher>
+            Don't have an account? <Link to="/create-account">Create One &rarr;</Link>
+        </Switcher>
+        <ForgotPassword onClick={() => navigate("/reset-password")}>
+            Forgot password?
+        </ForgotPassword>
     </Wrapper>
 }
