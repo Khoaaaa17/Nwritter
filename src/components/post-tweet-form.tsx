@@ -2,7 +2,6 @@ import { addDoc, collection, updateDoc } from "firebase/firestore"
 import { useState } from "react"
 import styled from "styled-components"
 import { auth, db, storage } from "../firebase"
-import { EmailAuthCredential } from "firebase/auth/cordova"
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 
 const Form = styled.form`
@@ -90,15 +89,15 @@ export default function PostTweetForm(){
                 userId: user.uid
             });
             if(file){
-                const locationRef = ref(storage,`tweets/${user.uid}-${user.displayName}/${doc.id}`);
+                const locationRef = ref(storage,`tweets/${user.uid}/${doc.id}`);
                 const result = await uploadBytes(locationRef,file);
                 const url = await getDownloadURL(result.ref);
                 await updateDoc(doc,{
                     photo: url
                 })
-                setTweet("");
-                setFile(null);
             }
+            setTweet("");
+            setFile(null);
         } catch (e:any) {
             console.error(e);
             console.log(e);

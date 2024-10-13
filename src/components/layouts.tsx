@@ -25,7 +25,7 @@ const MenuItem = styled.div`
     align-items:center;
     justify-content:center;
     border: 2px solid white;
-    height: 50px;
+    height: 50px; //Match
     width: 50px;
     border-radius: 50%;
     svg{

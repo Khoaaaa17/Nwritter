@@ -48,12 +48,12 @@ const router = createBrowserRouter([
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
-  *{
+  * {
     box-sizing: border-box;
   }
-  body{
+  body {
     background-color: black;
-    color: white;
+    color:white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 `;
@@ -61,7 +61,7 @@ const GlobalStyles = createGlobalStyle`
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
-  justify-content:center;
+  justify-content: center;
 `;
 
 function App() {
