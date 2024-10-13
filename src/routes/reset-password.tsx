@@ -83,10 +83,10 @@ export default function ResetPassword(){
             <Input onChange={onChange} type="submit" value={loading ? "Loading..." : "Sent"} />
         </Form>
         <Switcher>
-            Don't want to change password? <Link to={"/login"}>Go back &rarr;</Link>
+            Don't want to change password? <Link to={"/login"}>Go Back &rarr;</Link>
         </Switcher>
         <Switcher>
-            Don't have an account? <Link to={"/create-account"}>Register &rarr;</Link>
+            Don't have an account? <Link to={"/create-account"}>Create One &rarr;</Link>
         </Switcher>
         {message && <Success>{message}</Success>}
         {error&& <Error>{error}</Error>}
