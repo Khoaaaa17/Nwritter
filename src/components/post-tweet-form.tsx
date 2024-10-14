@@ -49,16 +49,25 @@ const AttachFileInput = styled.input`
 const SubmitButton = styled.input`
     background-color: #1d9bf0;
     color: white;
-    border: none;
-    padding: 10px 0px;
+    border: none; 
+    padding: 10px 0;
     border-radius: 20px;
     font-size: 16px;
     cursor: pointer;
-    &:hover,
-    &:active {
-        opacity: 0.9;
+    outline: none; 
+    &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+        border: none; 
     }
-`
+
+    &:active {
+
+        border: none; 
+    }
+`;
+
+
 
 export default function PostTweetForm(){
     const [loading,setLoading] = useState(false);

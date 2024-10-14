@@ -60,8 +60,8 @@ export const Switcher = styled.span`
 
 export const ForgotPassword = styled.span` 
 border: 1px solid rgba(255, 255, 255, 0.3);
-font-weight: 500;
-padding: 10px 9rem;
+font-weight: 600;
+padding: 10px 15px;
 border-radius: 50px;
 background-color: black;
 color: white;
