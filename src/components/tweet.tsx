@@ -88,23 +88,35 @@ const DropdownMenu = styled.div`
 `;
 
 const DropdownButton = styled.button`
+<<<<<<< HEAD
   background-color: transparent;
   border: none;
   border-bottom: 1px solid rgba(0,0,0,0.5);
+=======
+  background-color: white;
+  border: none;
+>>>>>>> f5d38b3414d1ed5901b5a1af7e7ea6dcc4b9d0bc
   padding: 8px 12px;
   text-align: left;
   font-size: 14px;
   cursor: pointer;
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
+<<<<<<< HEAD
+=======
+    opacity: 0.8;
+>>>>>>> f5d38b3414d1ed5901b5a1af7e7ea6dcc4b9d0bc
     transform: scale(1.05);
   }
   &:active {
     transform: scale(0.95);
   }
+<<<<<<< HEAD
   &:last-child{
     border: none;
   }
+=======
+>>>>>>> f5d38b3414d1ed5901b5a1af7e7ea6dcc4b9d0bc
 `;
 
 const EditButtons = styled.div`
@@ -150,6 +162,7 @@ background-color: tomato;
 `;
 
 const CreatedTime = styled.span`
+<<<<<<< HEAD
     position: absolute; 
     bottom: 0px;
     right: 3%;        
@@ -157,6 +170,14 @@ const CreatedTime = styled.span`
     color: rgba(128,128,128,0.7);
     font-size: 12px;
 
+=======
+  position: absolute; 
+    bottom: 10px;
+    right: 3%;        
+    padding: 5px;
+    color: rgba(128,128,128,0.7);
+    font-size: 14px;
+>>>>>>> f5d38b3414d1ed5901b5a1af7e7ea6dcc4b9d0bc
 `
 
 const ModalBackground = styled.div`
