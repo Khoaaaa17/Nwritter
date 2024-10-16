@@ -145,7 +145,7 @@ background-color: tomato;
 
 export const CreatedTime = styled.span`
   position: absolute; 
-    bottom: 10px;
+    bottom: 0px;
     right: 3%;        
     padding: 5px;
     color: rgba(128,128,128,0.7);
