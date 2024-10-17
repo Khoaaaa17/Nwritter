@@ -34,6 +34,18 @@ export const EditInput = styled.textarea`
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 `;
 
+export const FileInput = styled.div`
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+`;
+
 export const Username = styled.span`
   font-weight: 600;
   font-size: 15px;
