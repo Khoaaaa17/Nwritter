@@ -66,8 +66,8 @@ export default function Tweet({ username, photo, tweet, userId, id, createdAt }:
   };
 
   const handleEditPhoto = () => {
-    setEditPhotoMode(true);  
     fileInputRef.current?.click(); 
+    setEditPhotoMode(true);  
   };
 
   const onEditFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,6 +102,11 @@ export default function Tweet({ username, photo, tweet, userId, id, createdAt }:
       console.error(e);
     }
   };
+
+  const handleCancelEditFile = () => {
+    setEditFile(null);
+    setEditPhotoMode(false);
+  }
 
   const date = dayjs(createdAt).format('DD/MM/YYYY HH:mm:ss');
 
@@ -172,7 +177,7 @@ export default function Tweet({ username, photo, tweet, userId, id, createdAt }:
         <Column>{photo && <Photo src={photo} />}</Column>
       </Wrapper>
 
-      {editPhotoMode && (  // NEW: Separate block for editing photo
+      {editPhotoMode && (  
         <FileInput>
           <input
             ref={fileInputRef}
@@ -187,7 +192,7 @@ export default function Tweet({ username, photo, tweet, userId, id, createdAt }:
               <p>Selected file: {editFile.name}</p>
               <EditButtons>
                 <ConfirmButton onClick={handleComfirmEditFile}>Upload</ConfirmButton>
-                <CancelButton onClick={() => setEditFile(null)}>Cancel</CancelButton>
+                <CancelButton onClick={handleCancelEditFile}>Cancel</CancelButton>
               </EditButtons>
             </>
           )}
