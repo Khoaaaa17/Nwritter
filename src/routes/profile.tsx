@@ -39,15 +39,20 @@ const AvatarInput = styled.input`
     display: none;
 `;
 
-const Name = styled.span`
+const NameContainer = styled.div`
     position: relative;
+    display: inline-block;
+`
+
+const Name = styled.span`
     font-size: 22px;
+    margin-right: 5px;
 `;
 
 const UsernameEditButton = styled.span`
     position: absolute;
-    bottom: 15px;
-    left: 60px;
+    top: -10px;
+    left: 100%;
     svg {
         width: 20px;
         color: rgba(255,255,255,0.5);
@@ -150,6 +155,7 @@ export default function Profile() {
                 type="file"
                 accept="image/*"
             />
+            <NameContainer>
             <Name>
                 {!editMode && (
                     <UsernameEditButton onClick={toggleEditUsername}>
@@ -174,6 +180,7 @@ export default function Profile() {
                     user?.displayName || "Anonymous"
                 )}
             </Name>
+            </NameContainer>
             <Tweets>
                 {tweets.map((tweet) => (
                     <Tweet key={tweet.id} {...tweet} />
