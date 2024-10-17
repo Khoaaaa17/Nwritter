@@ -66,8 +66,10 @@ export default function Tweet({ username, photo, tweet, userId, id, createdAt }:
   };
 
   const handleEditPhoto = () => {
-    fileInputRef.current?.click(); 
-    setEditPhotoMode(true);  
+    setEditPhotoMode(true); 
+    setTimeout(() => {
+      fileInputRef.current?.click();
+    }, 0);
   };
 
   const onEditFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
